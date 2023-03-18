@@ -1,0 +1,18 @@
+{
+  "name": "mapdpsserialio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@serialport/bindings-cpp": "^10.8.0",
+    "@serialport/list": "^10.5.0",
+    "express": "^4.18.2",
+    "serialport": "^10.5.0"
+  },
+  "description": ""
+}

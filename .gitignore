@@ -1,0 +1,52 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/mapdpsClient/node_modules
+/mapdpsSerialIO/node_modules
+/mapdpsClient/.pnp
+/mapdpsSerialIO/.pnp
+/mapdpsClient/.pnp.js
+/mapdpsSerialIO/.pnp.js
+
+
+# testing
+/mapdpsClient/coverage
+/mapdpsSerialIO/coverage
+
+
+
+# production
+/mapdpsClient/build
+/mapdpsSerialIO/build
+
+
+# misc
+/mapdpsClient/coverage
+/mapdpsSerialIO/coverage
+
+/mapdpsClient/.DS_Store
+/mapdpsSerialIO/.DS_Store
+
+/mapdpsClient/.env.local
+/mapdpsSerialIO/.env.local
+
+/mapdpsClient/.env.development.local
+/mapdpsSerialIO/.env.development.local
+
+/mapdpsClient/.env.test.local
+/mapdpsSerialIO/.env.test.local
+
+/mapdpsClient/.env.production.local
+/mapdpsSerialIO/.env.production.local
+
+
+
+/mapdpsClient/npm-debug.log*
+/mapdpsSerialIO/npm-debug.log*
+
+/mapdpsClient/yarn-debug.log*
+/mapdpsSerialIO/yarn-debug.log*
+
+/mapdpsClient/yarn-error.log*
+/mapdpsSerialIO/yarn-error.log*
+
