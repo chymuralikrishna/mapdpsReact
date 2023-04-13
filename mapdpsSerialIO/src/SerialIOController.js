@@ -1,5 +1,5 @@
 const { SerialPort } = require('serialport');
-
+import { Buffer } from 'node:buffer';
 const listSerialPorts = async () => {
   const ports = await SerialPort.list()
   const portList = ports.map(port => ({
@@ -18,23 +18,25 @@ const listSerialPorts = async () => {
 }
 
 function readSerialPort(port, baudRate, timeout) {
+  console.log(port);
   return new Promise((resolve, reject) => {
-    const serialPort = new SerialPort({ path: port, baudRate: baudRate });
     const value = { chunk: null };
-    serialPort.on('open', () => {
+    try {
+    const serialPort = new SerialPort( port,{baudRate: baudRate });
+    serialPort.once('open', () => {
       console.log(`Serial port ${port} opened.`);
     });
 
     let timer = null;
-    serialPort.on('data', (data) => {
+    serialPort.once('data', (data) => {
       console.log(`Received data from serial port: ${data}`);
+      const buf = Buffer.from(data);
       clearTimeout(timer);
-      value = data;
-      resolve(value);
+      resolve(buf.readDoubleBE(0));
       serialPort.close();
     });
 
-    serialPort.on('error', (err) => {
+    serialPort.once('error', (err) => {
       console.error(`Error reading from serial port: ${err}`);
       clearTimeout(timer);
       reject(value);
@@ -43,10 +45,13 @@ function readSerialPort(port, baudRate, timeout) {
 
     timer = setTimeout(() => {
       console.error(`Timeout reading from serial port.`);
-      resolve(value);
+      resolve({ chunk: null,err: 'Serial port in not available'});
       serialPort.close();
       reject(new Error(`Timeout reading from serial port.`));
     }, timeout);
+  } catch (error) {
+    resolve({ chunk: null,err: error});
+  }
   });
 }
 

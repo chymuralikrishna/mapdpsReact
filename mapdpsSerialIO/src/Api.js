@@ -17,11 +17,10 @@ app.get('/api/listPorts',async (req,res)=>{
 
 // read data from ports by passing path, baudRate, timeout 
 app.post('/api/readPort', async (req, res) => {
-  // return res.json({ data: await serialIOController.getSerialPortData(req.body) });
-  return res.json({ data: await serialIOController.readSerialPort('COM1',9600,2000) });
-  
+  // return res.json({ data: await serialIOController.readSerialPort('COM1',9600,2000) });
+  return res.json({ data: await serialIOController.readSerialPort(req.body.path,req.body.baudrate,req.body.timeout) });
 });
 
-app.listen(3000, () => {
-  console.log('Server started on port 3000');
+app.listen(3010, () => {
+  console.log('Server started on port 3010');
 });

@@ -1,7 +1,7 @@
 {
   "name": "mapdpsserialio",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "/src/api.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,5 +14,18 @@
     "express": "^4.18.2",
     "serialport": "^10.5.0"
   },
-  "description": ""
+  "bundleDependencies": [
+    "@serialport/bindings-cpp",
+    "@serialport/list",
+    "express",
+    "serialport"
+  ],
+  "devDependencies": {},
+  "description": "",
+  "bundledDependencies": [
+    "@serialport/bindings-cpp",
+    "@serialport/list",
+    "express",
+    "serialport"
+  ]
 }

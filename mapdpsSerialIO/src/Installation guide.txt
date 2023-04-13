@@ -1,0 +1,34 @@
+Step1: copy/export packages from internet / source machine
+npm install pm2 -g
+npm install -g npm-bundle
+npm-bundle pm2
+npm-bundle mapdpsserialio // output mapdpsserialio-x.x.x.tgz
+
+
+Step2: install packages on client machine
+install node-vX.msi
+npm i /copy/to/path/pm2-x.x.x.tgz -g
+
+Step 3.1: To start an application in Fork mode:
+extract zip  mapdpsserialio-x.x.x.tgz
+pm2 start .\src\Api.js
+Step3.2:To start an application in Cluster mode:
+pm2 start  .\src\Api.js -i max
+
+Test:
+curl -X POST http://localhost:3010/api/readPort -H 'Content-Type: application/json' -d '{"path": "COM1", "baudrate": 9600, "timeout": 2000 }'
+curl -X GET http://localhost:3010/api/listPorts
+
+# Usefull commands
+# pm2 startup
+# pm2 save
+# pm2 restart app_name
+# pm2 reload app_name
+# pm2 stop app_name
+# pm2 delete app_name
+
+
+
+
+
+
